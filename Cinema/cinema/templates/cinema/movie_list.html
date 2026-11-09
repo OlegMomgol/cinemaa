@@ -1,0 +1,22 @@
+{% extends "cinema/base.html" %}
+{% block content %}
+<h1 class="mb-4">Все фильмы</h1>
+
+{% if movies %}
+    <ul class="list-group">
+    {% for movie in movies %}
+        <li class="list-group-item d-flex justify-content-between">
+            <span>
+                <strong>{{ movie.title }} ({{ movie.year }})</strong>
+                – {{ movie.director.name }}
+            </span>
+            <span class="text-muted">
+                {{ movie.genre.name }} ·  {{ movie.rating }} · {{ movie.duration_minutes }} мин
+            </span>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-muted">Пока нет ни одного фильма. <a href="{% url 'add_movie' %}">Добавьте первый</a>.</p>
+{% endif %}
+{% endblock %}

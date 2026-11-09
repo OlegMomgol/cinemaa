@@ -1,0 +1,9 @@
+{% extends "cinema/base.html" %}
+{% block content %}
+<h1 class="mb-4">{{ title }}</h1>
+<form method="post" class="card p-4" style="max-width: 600px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+{% endblock %}
